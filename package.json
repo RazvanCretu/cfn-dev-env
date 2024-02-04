@@ -1,8 +1,9 @@
 {
-  "name": "ec2-bootup",
+  "name": "dev-stack",
   "version": "0.1.0",
+  "type": "module",
   "bin": {
-    "ec2-bootup": "bin/ec2-bootup.js"
+    "ec2-bootup": "bin/dev-stack.js"
   },
   "scripts": {
     "build": "echo \"The build step is not required when using JavaScript!\" && exit 0",
@@ -10,12 +11,13 @@
     "test": "jest"
   },
   "devDependencies": {
-    "aws-cdk": "2.118.0",
+    "aws-cdk": "2.126.0",
+    "esbuild": "^0.20.0",
     "jest": "^29.7.0"
   },
   "dependencies": {
-    "aws-cdk-lib": "2.118.0",
-    "constructs": "^10.0.0",
-    "dotenv": "^16.3.1"
+    "aws-cdk-lib": "2.126.0",
+    "constructs": "^10.3.0",
+    "dotenv": "^16.4.1"
   }
 }

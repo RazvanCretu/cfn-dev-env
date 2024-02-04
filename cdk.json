@@ -1,5 +1,5 @@
 {
-  "app": "node bin/ec2-bootup.js",
+  "app": "node bin/dev-stack.js",
   "watch": {
     "include": [
       "**"
