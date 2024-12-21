@@ -49,9 +49,9 @@ try {
     
     mkdir c:\rclone 
 
-    $wc.DownloadFile("https://downloads.rclone.org/v1.67.0/rclone-v1.67.0-windows-amd64.zip", "C:\rclone\rclone.zip")
+    $wc.DownloadFile("https://downloads.rclone.org/v1.68.2/rclone-v1.68.2-windows-amd64.zip", "C:\rclone\rclone.zip")
     Expand-Archive -path 'c:\rclone\rclone.zip' -destinationpath 'C:\rclone\'
-    Copy-Item "C:\rclone\rclone-v1.67.0-windows-amd64\*.*" "C:\rclone\"
+    Copy-Item "C:\rclone\rclone-v1.68.2-windows-amd64\*.*" "C:\rclone\"
 
     [Environment]::SetEnvironmentVariable('Path', "$([Environment]::GetEnvironmentVariable('Path', 'User'));C:\rclone", 'User')
 
@@ -108,6 +108,12 @@ try {
 
     [int]$ElapsedAll = $StopWatchAll.Elapsed.TotalSeconds
 
+    "+++++ Script took $ElapsedAll seconds +++++"
+}
+catch {
+    "Error: $($Error[0])"
+}
+finally {
     Set-Location "C:\Windows\System32\config\systemprofile\AppData\Local\Temp"
 
     $current_date = Get-Date -Format "yyyy-MM-dd-HH-mm-ss"
@@ -120,9 +126,4 @@ try {
             Copy-Item -Path "$($_.FullName)" -Destination $logs -Recurse
         }
     }
-
-    "+++++ Script took $ElapsedAll seconds +++++"
-}
-catch {
-    "Error: $($Error[0])"
 }
