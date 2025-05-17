@@ -78,7 +78,7 @@ try {
     Write-Host (rclone --version)
     Write-Host (aws --version)
 
-    Start-Process PowerShell -WindowStyle Hidden -ArgumentList "-Command & {
+    Start-Process PowerShell -Wait -WindowStyle Hidden -ArgumentList "-Command & {
         rclone config create general s3 provider=AWS env_auth=true region=eu-central-1 location_contraint=EU server_side_encryption=AES256 storage_class=STANDARD
         rclone mount general:general-cr3tu/ S: --vfs-cache-mode full --log-file='C:\rclone.log'
     }"
@@ -101,6 +101,10 @@ try {
     . ".\env\Scripts\activate.ps1"
 
     pip install -r requirements.txt
+
+    Start-Process 'C:\Program Files\MetaTrader5\terminal64.exe' -WindowStyle Hidden -ArgumentList "/portable"
+
+    Start-Sleep -Seconds 10
 
     $env:PYTHONBUFFERED = 1; python src\main.py
 
